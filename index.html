@@ -3,55 +3,630 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>焦天浩的个人主页</title>
+  <meta name="description" content="个人主页：关于我、学习经历、项目与文章。">
+  <meta name="theme-color" content="#5f8fe8">
+  <title>你的名字｜个人主页</title>
 
   <style>
+    :root {
+      --blue: #4f80df;
+      --blue-deep: #285ab8;
+      --blue-soft: #edf4ff;
+      --pink: #ec78ab;
+      --pink-deep: #be477c;
+      --pink-soft: #fff0f6;
+      --ink: #1c2534;
+      --muted: #667085;
+      --line: #dfe5ef;
+      --paper: #ffffff;
+      --canvas: #f7f9fc;
+      --content: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 40px 20px;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      line-height: 1.7;
-      color: #24292f;
-      background: #f6f8fa;
-    }
-
-    main {
-      max-width: 760px;
-      margin: 40px auto;
-      padding: 40px;
-      background: white;
-      border: 1px solid #d0d7de;
-      border-radius: 8px;
-    }
-
-    h1 {
-      color: #0969da;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      line-height: 1.75;
+      letter-spacing: 0;
     }
 
     a {
-      color: #0969da;
+      color: var(--blue-deep);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--pink-deep);
+    }
+
+    a:focus-visible {
+      outline: 3px solid rgba(236, 120, 171, 0.45);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 20;
+      padding: 8px 12px;
+      color: var(--ink);
+      background: var(--paper);
+      border-radius: 4px;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .hero {
+      position: relative;
+      min-height: min(66svh, 620px);
+      overflow: hidden;
+      color: #ffffff;
+      background: linear-gradient(120deg, var(--blue-deep) 0%, var(--blue) 48%, var(--pink) 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::before {
+      inset: 0;
+      opacity: 0.2;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, #000, transparent 84%);
+    }
+
+    .hero::after {
+      right: -8vw;
+      bottom: -130px;
+      width: 42vw;
+      min-width: 420px;
+      height: 310px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      transform: rotate(-8deg);
+    }
+
+    .nav,
+    .hero-inner,
+    .content,
+    .footer-inner {
+      width: min(calc(100% - 48px), var(--content));
+      margin-inline: auto;
+    }
+
+    .nav {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .brand {
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      align-items: center;
+      gap: 72px;
+      min-height: calc(min(66svh, 620px) - 72px);
+      padding-block: 54px 70px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 15px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1.12;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 18px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 30px;
+    }
+
+    .hero-links a {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 650;
+      text-decoration-color: rgba(255, 255, 255, 0.48);
+    }
+
+    .portrait {
+      display: grid;
+      width: 180px;
+      aspect-ratio: 1;
+      place-items: center;
+      color: var(--blue-deep);
+      background: rgba(255, 255, 255, 0.94);
+      border: 8px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      box-shadow: 0 18px 60px rgba(31, 51, 98, 0.24);
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 72px;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    main {
+      background: var(--paper);
+    }
+
+    .content {
+      padding-block: 78px 96px;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 54px;
+      padding-block: 50px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 20px;
+    }
+
+    .section:first-child {
+      padding-top: 0;
+    }
+
+    .section:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--blue-deep);
+      font-size: 25px;
+      line-height: 1.35;
+      font-weight: 720;
+    }
+
+    .section-title::after {
+      display: block;
+      width: 42px;
+      height: 3px;
+      margin-top: 14px;
+      content: "";
+      background: var(--pink);
+    }
+
+    .section-body > :first-child {
+      margin-top: 0;
+    }
+
+    .section-body > :last-child {
+      margin-bottom: 0;
+    }
+
+    .lead {
+      color: #344054;
+      font-size: 18px;
+      line-height: 1.9;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .fact {
+      padding-top: 14px;
+      border-top: 2px solid var(--blue-soft);
+    }
+
+    .fact strong,
+    .fact span {
+      display: block;
+    }
+
+    .fact strong {
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .fact span {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline,
+    .plain-list,
+    .contact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 26px;
+      padding: 0 0 28px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-time {
+      color: var(--pink-deep);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .timeline h3,
+    .item h3 {
+      margin: 0 0 6px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .timeline p,
+    .item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .item {
+      position: relative;
+      padding: 0 0 28px 22px;
+    }
+
+    .item::before {
+      position: absolute;
+      top: 9px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      content: "";
+      background: var(--pink);
+      border-radius: 50%;
+    }
+
+    .item:last-child {
+      padding-bottom: 0;
+    }
+
+    .item-meta {
+      margin-top: 8px;
+      color: var(--blue-deep);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 28px;
+    }
+
+    .contact-list li {
+      min-width: 0;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-list strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+
+    .contact-list span,
+    .contact-list a {
+      overflow-wrap: anywhere;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      color: #667085;
+      background: var(--canvas);
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 28px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .nav,
+      .hero-inner,
+      .content,
+      .footer-inner {
+        width: min(calc(100% - 36px), var(--content));
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links li:nth-child(2),
+      .nav-links li:nth-child(3) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 72svh;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        min-height: calc(72svh - 72px);
+        padding-block: 44px 54px;
+      }
+
+      .portrait {
+        grid-row: 1;
+        width: 108px;
+        font-size: 46px;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 14vw, 62px);
+      }
+
+      .intro {
+        font-size: 16px;
+      }
+
+      .content {
+        padding-block: 58px 72px;
+      }
+
+      .section {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-block: 42px;
+      }
+
+      .facts,
+      .contact-list {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-inner span {
+        display: block;
+        margin-top: 4px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main>
-    <h1>你好，我是焦天浩</h1>
-    <p>欢迎来到我的个人主页。</p>
+  <a class="skip-link" href="#main">跳到主要内容</a>
 
-    <h2>关于我</h2>
-    <p>这里可以填写你的专业、兴趣和个人介绍。</p>
+  <header class="hero" id="top">
+    <nav class="nav" aria-label="主要导航">
+      <a class="brand" href="#top">个人主页</a>
+      <ul class="nav-links">
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#experience">个人经历</a></li>
+        <li><a href="#projects">项目作品</a></li>
+        <li><a href="#contact">联系我</a></li>
+      </ul>
+    </nav>
 
-    <h2>我的项目</h2>
-    <ul>
-      <li>项目一：个人网站</li>
-      <li>项目二：学习笔记</li>
-    </ul>
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">你好，很高兴与你相遇</p>
+        <h1>你的名字</h1>
+        <p class="intro">在这里填写一句简短的自我介绍，例如你的专业、研究方向、职业身份或正在关注的事情。</p>
+        <div class="hero-links" aria-label="个人链接">
+          <a href="#projects">查看我的项目</a>
+          <a href="#contact">与我联系</a>
+        </div>
+      </div>
+      <div class="portrait" role="img" aria-label="个人头像占位图">你</div>
+    </div>
+  </header>
 
-    <h2>联系我</h2>
-    <p>
-      <a href="https://github.com/silenthj0">我的 GitHub</a>
-    </p>
+  <main id="main">
+    <div class="content">
+      <section class="section" id="about">
+        <h2 class="section-title">关于我</h2>
+        <div class="section-body">
+          <p class="lead">在这里填写较完整的个人介绍。可以包括你的学习或工作背景、长期兴趣，以及你希望通过这个网站分享的内容。</p>
+          <div class="facts">
+            <div class="fact">
+              <strong>目前身份</strong>
+              <span>填写你的身份</span>
+            </div>
+            <div class="fact">
+              <strong>所在城市</strong>
+              <span>填写你的城市</span>
+            </div>
+            <div class="fact">
+              <strong>关注方向</strong>
+              <span>填写你的方向</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <h2 class="section-title">个人经历</h2>
+        <div class="section-body">
+          <ol class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-time">起止年份</div>
+              <div>
+                <h3>学校、机构或组织名称</h3>
+                <p>填写专业、职位，以及这段经历中最重要的内容。</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-time">起止年份</div>
+              <div>
+                <h3>学校、机构或组织名称</h3>
+                <p>填写专业、职位，以及这段经历中最重要的内容。</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h2 class="section-title">项目作品</h2>
+        <div class="section-body">
+          <ul class="plain-list">
+            <li class="item">
+              <h3><a href="#">项目名称一</a></h3>
+              <p>用一两句话介绍项目解决的问题、你的主要工作，以及最终取得的结果。</p>
+              <div class="item-meta">关键词一 · 关键词二 · 年份</div>
+            </li>
+            <li class="item">
+              <h3><a href="#">项目名称二</a></h3>
+              <p>用一两句话介绍项目解决的问题、你的主要工作，以及最终取得的结果。</p>
+              <div class="item-meta">关键词一 · 关键词二 · 年份</div>
+            </li>
+            <li class="item">
+              <h3><a href="#">项目名称三</a></h3>
+              <p>用一两句话介绍项目解决的问题、你的主要工作，以及最终取得的结果。</p>
+              <div class="item-meta">关键词一 · 关键词二 · 年份</div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="writing">
+        <h2 class="section-title">文章笔记</h2>
+        <div class="section-body">
+          <ul class="plain-list">
+            <li class="item">
+              <h3><a href="#">文章或笔记标题</a></h3>
+              <p>填写一段简短摘要，让访问者快速了解这篇内容。</p>
+              <div class="item-meta">分类名称 · 发布日期</div>
+            </li>
+            <li class="item">
+              <h3><a href="#">文章或笔记标题</a></h3>
+              <p>填写一段简短摘要，让访问者快速了解这篇内容。</p>
+              <div class="item-meta">分类名称 · 发布日期</div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2 class="section-title">联系我</h2>
+        <div class="section-body">
+          <p class="lead">欢迎就学习、项目或共同感兴趣的话题与我交流。</p>
+          <ul class="contact-list">
+            <li>
+              <strong>电子邮箱</strong>
+              <span>填写你的邮箱</span>
+            </li>
+            <li>
+              <strong>代码主页</strong>
+              <a href="https://github.com/silenthj0">填写或修改链接</a>
+            </li>
+            <li>
+              <strong>个人简历</strong>
+              <a href="#">添加简历文件</a>
+            </li>
+            <li>
+              <strong>其他平台</strong>
+              <a href="#">添加你的主页</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
   </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>你的名字的个人主页</div>
+      <span>持续记录，保持好奇。</span>
+    </div>
+  </footer>
 </body>
 </html>
