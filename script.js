@@ -347,6 +347,38 @@ window.addEventListener(
   { passive: true },
 );
 
+async function loadGitHubFollowers() {
+  const followerCount = document.querySelector("#github-followers");
+  const cacheKey = "github-followers-silenthj0";
+  const cacheDuration = 30 * 60 * 1000;
+
+  try {
+    const cached = JSON.parse(localStorage.getItem(cacheKey));
+    if (cached && Date.now() - cached.savedAt < cacheDuration) {
+      followerCount.textContent = Number(cached.followers).toLocaleString("zh-CN");
+      return;
+    }
+  } catch {
+    localStorage.removeItem(cacheKey);
+  }
+
+  try {
+    const response = await fetch("https://api.github.com/users/silenthj0", {
+      headers: { Accept: "application/vnd.github+json" },
+    });
+    if (!response.ok) throw new Error(`GitHub API returned ${response.status}`);
+
+    const profile = await response.json();
+    followerCount.textContent = Number(profile.followers).toLocaleString("zh-CN");
+    localStorage.setItem(
+      cacheKey,
+      JSON.stringify({ followers: profile.followers, savedAt: Date.now() }),
+    );
+  } catch {
+    followerCount.textContent = "—";
+  }
+}
+
 document.querySelector("#note-count").textContent = notes.length;
 document.querySelector("#category-count").textContent = new Set(notes.map((note) => note.category)).size;
 document.querySelector("#file-count").textContent = notes.reduce((total, note) => total + note.files.length, 0);
@@ -356,3 +388,4 @@ const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "dark") setTheme(true);
 renderNotes();
 refreshIcons();
+loadGitHubFollowers();

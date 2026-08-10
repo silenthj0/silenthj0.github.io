@@ -668,6 +668,54 @@ main {
   width: 18px;
 }
 
+.profile-reach {
+  display: grid;
+  margin: 18px 0 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.profile-reach > div {
+  display: flex !important;
+  min-width: 0;
+  min-height: 50px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-reach > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.profile-reach dt {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.profile-reach dt svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  color: var(--wine);
+}
+
+.profile-reach dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
 .profile-section {
   margin-top: 30px;
   padding-top: 24px;
@@ -1006,6 +1054,7 @@ body.dark .site-footer {
   .profile-intro,
   .profile-stats,
   .follow-button,
+  .profile-reach,
   .profile-section {
     width: min(100%, 440px);
     margin-right: auto;
