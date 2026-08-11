@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="SilenThJ 的物理与数学学习笔记，提供原子物理、数学物理方法、热学、电磁学与量子计算资料下载。"
+      content="SilenThJ 的个人主页，记录物理、数学与计算学习，并提供独立笔记站入口。"
     />
     <meta name="theme-color" content="#8f164f" />
-    <title>SilenThJ Notes | 物理与数学学习笔记</title>
+    <title>SilenThJ | 物理、数学与学习笔记</title>
     <link rel="icon" href="https://avatars.githubusercontent.com/u/297899109?v=4" />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://avatars.githubusercontent.com" />
@@ -18,14 +18,14 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#notes">跳到笔记目录</a>
+    <a class="skip-link" href="#main">跳到主要内容</a>
 
     <header class="hero" id="home">
       <nav class="site-nav" aria-label="主导航">
         <div class="nav-inner">
           <a class="brand" href="#home" aria-label="返回首页">
             <span class="brand-mark" aria-hidden="true">S</span>
-            <span>SilenThJ Notes</span>
+            <span>SilenThJ</span>
           </a>
 
           <button class="nav-toggle icon-button" type="button" aria-label="打开导航" aria-expanded="false">
@@ -59,187 +59,188 @@
           width="96"
           height="96"
         />
-        <p class="hero-kicker">PHYSICS · MATHEMATICS · NOTES</p>
+        <p class="hero-kicker">PHYSICS · MATHEMATICS · COMPUTING</p>
         <h1>SilenThJ</h1>
-        <p class="hero-copy">记录推导，整理知识，也把一路积累的学习资料分享给你。</p>
-        <a class="hero-action" href="#notes">
-          <i data-lucide="library-big" aria-hidden="true"></i>
-          浏览课程笔记
-        </a>
-      </div>
-      <a class="scroll-cue" href="#notes" aria-label="向下浏览笔记">
-        <i data-lucide="chevron-down" aria-hidden="true"></i>
-      </a>
-    </header>
-
-    <main id="notes">
-      <div class="content-layout">
-        <section class="catalog" aria-labelledby="catalog-title">
-          <header class="catalog-header">
-            <p class="section-kicker">NOTE ARCHIVE</p>
-            <div class="catalog-heading-row">
-              <div>
-                <h2 id="catalog-title">课程笔记目录</h2>
-                <p>按课程整理的学习资料，点击对应格式即可从 GitHub 直接下载。</p>
-              </div>
-              <a
-                class="repository-link"
-                href="https://github.com/silenthj0/notes/tree/main/content"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <i data-lucide="folder-git-2" aria-hidden="true"></i>
-                源文件仓库
-              </a>
-            </div>
-          </header>
-
-          <div class="catalog-toolbar" aria-label="笔记筛选工具">
-            <label class="search-box" for="note-search">
-              <i data-lucide="search" aria-hidden="true"></i>
-              <input id="note-search" type="search" placeholder="搜索笔记或课程" autocomplete="off" />
-            </label>
-
-            <div class="category-tabs" role="tablist" aria-label="按课程筛选">
-              <button type="button" role="tab" aria-selected="true" data-category="全部">全部</button>
-              <button type="button" role="tab" aria-selected="false" data-category="原子物理学">原子物理</button>
-              <button type="button" role="tab" aria-selected="false" data-category="数学物理方法">数理方法</button>
-              <button type="button" role="tab" aria-selected="false" data-category="热学">热学</button>
-              <button type="button" role="tab" aria-selected="false" data-category="电磁学">电磁学</button>
-              <button type="button" role="tab" aria-selected="false" data-category="量子计算">量子计算</button>
-            </div>
-          </div>
-
-          <div class="result-bar" aria-live="polite">
-            <span id="result-summary">正在整理笔记...</span>
-            <span class="source-status"><span aria-hidden="true"></span> GitHub main</span>
-          </div>
-
-          <div class="notes-grid" id="notes-grid"></div>
-
-          <noscript>
-            <p class="noscript-message">
-              当前浏览器未启用 JavaScript，请前往
-              <a href="https://github.com/silenthj0/notes/tree/main/content">GitHub 笔记目录</a>
-              下载资料。
-            </p>
-          </noscript>
-        </section>
-
-        <aside class="profile" id="about" aria-labelledby="profile-title">
-          <div class="profile-intro">
-            <img
-              class="profile-avatar"
-              src="https://avatars.githubusercontent.com/u/297899109?v=4"
-              alt="SilenThJ 的 GitHub 头像"
-              width="132"
-              height="132"
-              loading="lazy"
-            />
-            <p class="profile-label">ABOUT THE AUTHOR</p>
-            <h2 id="profile-title">SilenThJ</h2>
-            <p>这里存放物理与数学课程的学习笔记。资料会随学习进度持续整理与更新。</p>
-          </div>
-
-          <dl class="profile-stats" aria-label="笔记统计">
-            <div>
-              <dt id="note-count">19</dt>
-              <dd>笔记</dd>
-            </div>
-            <div>
-              <dt id="category-count">5</dt>
-              <dd>课程</dd>
-            </div>
-            <div>
-              <dt id="file-count">36</dt>
-              <dd>文件</dd>
-            </div>
-          </dl>
-
+        <p class="hero-copy">记录推导，梳理知识，也把学习过程中值得留下的内容分享出来。</p>
+        <div class="hero-actions">
+          <a class="hero-action primary" href="/notes/">
+            <i data-lucide="book-open-text" aria-hidden="true"></i>
+            进入笔记站
+          </a>
           <a
-            class="follow-button"
+            class="hero-action secondary"
             href="https://github.com/silenthj0"
             target="_blank"
             rel="noreferrer"
           >
             <i data-lucide="github" aria-hidden="true"></i>
-            Follow on GitHub
+            GitHub
           </a>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#notes" aria-label="向下浏览">
+        <i data-lucide="chevron-down" aria-hidden="true"></i>
+      </a>
+    </header>
 
-          <dl class="profile-reach" aria-label="主页与 GitHub 数据">
-            <div id="busuanzi_container_site_pv">
-              <dt>
-                <i data-lucide="eye" aria-hidden="true"></i>
-                <span id="busuanzi_value_site_pv" aria-live="polite">--</span>
-              </dt>
-              <dd>浏览量</dd>
-            </div>
-            <div>
-              <dt>
-                <i data-lucide="users" aria-hidden="true"></i>
-                <span id="github-followers" aria-live="polite">--</span>
-              </dt>
-              <dd>FOLLOW</dd>
-            </div>
-          </dl>
+    <main id="main">
+      <section class="notes-section" id="notes" aria-labelledby="notes-title">
+        <div class="section-inner notes-layout">
+          <div class="notes-intro">
+            <p class="section-kicker">NOTEBOOK</p>
+            <h2 id="notes-title">学习笔记</h2>
+            <p class="section-lead">
+              物理与数学课程的推导、概念和解题思路集中收录在独立笔记站中，内容随学习进度持续更新。
+            </p>
 
-          <section class="profile-section" aria-labelledby="categories-title">
-            <div class="profile-section-title">
-              <i data-lucide="layers-3" aria-hidden="true"></i>
-              <h3 id="categories-title">笔记分类</h3>
+            <div class="note-actions">
+              <a class="button primary-button" href="/notes/">
+                <i data-lucide="library-big" aria-hidden="true"></i>
+                浏览全部笔记
+              </a>
+              <a
+                class="button outline-button"
+                href="https://github.com/silenthj0/notes"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i data-lucide="folder-git-2" aria-hidden="true"></i>
+                查看源码仓库
+              </a>
             </div>
-            <ul class="category-list">
-              <li><button type="button" data-filter-shortcut="原子物理学"><span>原子物理学</span><b>3</b></button></li>
-              <li><button type="button" data-filter-shortcut="数学物理方法"><span>数学物理方法</span><b>1</b></button></li>
-              <li><button type="button" data-filter-shortcut="热学"><span>热学</span><b>7</b></button></li>
-              <li><button type="button" data-filter-shortcut="电磁学"><span>电磁学</span><b>7</b></button></li>
-              <li><button type="button" data-filter-shortcut="量子计算"><span>量子计算</span><b>1</b></button></li>
-            </ul>
-          </section>
 
-          <section class="profile-section" aria-labelledby="tags-title">
-            <div class="profile-section-title">
-              <i data-lucide="tags" aria-hidden="true"></i>
-              <h3 id="tags-title">标签</h3>
+            <div class="publishing-note">
+              <i data-lucide="refresh-cw" aria-hidden="true"></i>
+              <div>
+                <strong>独立维护，持续发布</strong>
+                <p>笔记内容与个人主页分开管理，更新会集中发布到笔记站。</p>
+              </div>
             </div>
-            <div class="tag-list">
+          </div>
+
+          <div class="subject-list" aria-label="笔记主题">
+            <a class="subject-item" href="/notes/">
+              <span class="subject-icon"><i data-lucide="atom" aria-hidden="true"></i></span>
+              <span>
+                <strong>原子物理学</strong>
+                <small>能级结构、角动量与多电子体系</small>
+              </span>
+              <i class="subject-arrow" data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="subject-item" href="/notes/">
+              <span class="subject-icon"><i data-lucide="function-square" aria-hidden="true"></i></span>
+              <span>
+                <strong>数学物理方法</strong>
+                <small>常用函数、分析工具与物理应用</small>
+              </span>
+              <i class="subject-arrow" data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="subject-item" href="/notes/">
+              <span class="subject-icon"><i data-lucide="thermometer-sun" aria-hidden="true"></i></span>
+              <span>
+                <strong>热学与热力学</strong>
+                <small>分子动理论、热力学定律与相变</small>
+              </span>
+              <i class="subject-arrow" data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="subject-item" href="/notes/">
+              <span class="subject-icon"><i data-lucide="magnet" aria-hidden="true"></i></span>
+              <span>
+                <strong>电磁学</strong>
+                <small>电磁场、介质、波与相对论变换</small>
+              </span>
+              <i class="subject-arrow" data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a class="subject-item" href="/notes/">
+              <span class="subject-icon"><i data-lucide="binary" aria-hidden="true"></i></span>
+              <span>
+                <strong>量子计算</strong>
+                <small>量子信息的基础概念与计算模型</small>
+              </span>
+              <i class="subject-arrow" data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="section-inner about-layout">
+          <div class="about-portrait">
+            <img
+              src="https://avatars.githubusercontent.com/u/297899109?v=4"
+              alt="SilenThJ 的 GitHub 头像"
+              width="180"
+              height="180"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="about-copy">
+            <p class="section-kicker">ABOUT</p>
+            <h2 id="about-title">关于我</h2>
+            <p>
+              我关注物理、数学与计算，习惯在学习中整理关键推导、概念联系和容易忽略的细节。这个主页是个人入口，完整内容发布在独立笔记站。
+            </p>
+            <div class="topic-tags" aria-label="关注方向">
               <span>物理</span>
               <span>数学</span>
-              <span>PDF</span>
-              <span>Markdown</span>
+              <span>计算</span>
               <span>课程笔记</span>
             </div>
-          </section>
+          </div>
 
-          <section class="profile-section repository-info" aria-labelledby="repository-title">
-            <div class="profile-section-title">
-              <i data-lucide="database" aria-hidden="true"></i>
-              <h3 id="repository-title">资料来源</h3>
-            </div>
-            <p>所有下载链接均指向公开仓库 <strong>silenthj0/notes</strong> 的 main 分支。</p>
-          </section>
-        </aside>
-      </div>
+          <aside class="about-links" aria-label="个人链接与数据">
+            <a href="https://github.com/silenthj0" target="_blank" rel="noreferrer">
+              <span><i data-lucide="github" aria-hidden="true"></i>GitHub</span>
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/silenthj0/notes" target="_blank" rel="noreferrer">
+              <span><i data-lucide="notebook-tabs" aria-hidden="true"></i>Notes Repository</span>
+              <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+            <dl class="reach-data">
+              <div id="busuanzi_container_site_pv">
+                <dt><span id="busuanzi_value_site_pv" aria-live="polite">--</span></dt>
+                <dd>主页浏览量</dd>
+              </div>
+              <div>
+                <dt><span id="github-followers" aria-live="polite">--</span></dt>
+                <dd>GitHub 关注者</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <div class="floating-tools" aria-label="页面工具">
-      <button class="tool-button" id="layout-toggle" type="button" aria-label="切换紧凑视图" title="紧凑视图" aria-pressed="false">
-        <i data-lucide="rows-3" aria-hidden="true"></i>
-      </button>
-      <button class="tool-button" id="theme-toggle" type="button" aria-label="切换深色模式" title="深色模式" aria-pressed="false">
+      <button
+        class="tool-button"
+        id="theme-toggle"
+        type="button"
+        aria-label="切换深色模式"
+        title="深色模式"
+        aria-pressed="false"
+      >
         <i data-lucide="moon" aria-hidden="true"></i>
       </button>
-      <button class="tool-button back-to-top" id="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">
+      <button
+        class="tool-button back-to-top"
+        id="back-to-top"
+        type="button"
+        aria-label="回到顶部"
+        title="回到顶部"
+      >
         <i data-lucide="arrow-up" aria-hidden="true"></i>
       </button>
     </div>
 
     <footer class="site-footer">
       <p>© <span id="current-year">2026</span> SilenThJ</p>
-      <p>
-        笔记托管于
-        <a href="https://github.com/silenthj0/notes" target="_blank" rel="noreferrer">GitHub</a>
-      </p>
+      <div class="footer-links">
+        <a href="/notes/">笔记站</a>
+        <a href="https://github.com/silenthj0" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
     </footer>
   </body>
 </html>
